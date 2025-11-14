@@ -74,7 +74,7 @@ abstract contract MarketPositionManager is
         if (action == Action.LEVERAGE) {
             _handleLeverage(amountLoan, data);
         } else {
-            _handleUnleverage(amountLoan, data);
+            _handleDeleverage(amountLoan, data);
         }
     }
 

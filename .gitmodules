@@ -10,3 +10,9 @@
 [submodule "lib/morpho-blue"]
 	path = lib/morpho-blue
 	url = https://github.com/morpho-org/morpho-blue
+[submodule "lib/KyberSwap"]
+	path = lib/KyberSwap
+	url = https://github.com/KyberNetwork/KyberSwap
+[submodule "lib/smart-contracts"]
+	path = lib/smart-contracts
+	url = https://github.com/KyberNetwork/smart-contracts

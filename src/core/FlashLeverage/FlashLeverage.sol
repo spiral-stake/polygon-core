@@ -7,7 +7,7 @@ pragma solidity 0.8.30;
 /// @dev Creates individual position proxy contracts for each user to isolate their positions.
 
 import {MarketPositionManager, MarketParams, Id, UserProxy, IERC20Metadata, FLError, Math} from "./MarketPositionManager.sol";
-import {SwapAggregator} from "./SwapAggregator.sol";
+import {SwapManager} from "./SwapManager.sol";
 import {Clones} from "@openzeppelin/contracts/proxy/Clones.sol";
 import {LeverageParams, DeleverageParams} from "../structs/LeverageParams.sol";
 import {LeveragePosition} from "../structs/LeveragePosition.sol";
@@ -18,7 +18,7 @@ import {IOracle} from "@morpho/interfaces/IOracle.sol";
 
 contract FlashLeverage is
     MarketPositionManager,
-    SwapAggregator,
+    SwapManager,
     ReentrancyGuard,
     Ownable2Step
 {
@@ -136,7 +136,7 @@ contract FlashLeverage is
         address swapRouter
     )
         Ownable(msg.sender)
-        SwapAggregator(swapRouter)
+        SwapManager(swapRouter)
         MarketPositionManager(morphoAddress)
     {
         if (morphoAddress == address(0) || swapRouter == address(0)) {
