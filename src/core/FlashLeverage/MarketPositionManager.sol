@@ -278,7 +278,7 @@ abstract contract MarketPositionManager is
     function _handleDeleverage(
         uint256 amountLoan,
         bytes calldata data
-    ) internal virtual {}
+    ) internal virtual returns (uint256 userAmountReturned) {}
 
     /////////////////////////
     // Public View Functions

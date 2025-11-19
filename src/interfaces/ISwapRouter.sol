@@ -2,5 +2,7 @@
 pragma solidity 0.8.30;
 
 interface ISwapRouter {
-    function swap(bytes memory swapData) external;
+    function swap(
+        bytes memory extCallData
+    ) external payable returns (uint256 returnAmount, uint256 gasUsed);
 }

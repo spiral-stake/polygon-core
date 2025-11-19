@@ -6,14 +6,6 @@ struct LeverageParams {
     address collateralToken;
     address loanToken;
     uint256 amountCollateral;
-    // Swap Data
-}
-
-struct DeleverageParams {
-    uint256 desiredLtv;
-    address collateralToken;
-    address loanToken;
-    uint256 sharesToBurn;
-    uint256 amountCollateralToWithdraw;
-    // Swap Data
+    bytes swapData;
+    // Need to add more swap related verification params and verify in the _swap function
 }

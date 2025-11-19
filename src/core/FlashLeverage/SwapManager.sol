@@ -8,15 +8,21 @@ pragma solidity 0.8.30;
  */
 
 import {ISwapRouter} from "../../interfaces/ISwapRouter.sol";
+import {TokenHelper} from "../libraries/TokenHelper.sol";
 
-contract SwapManager {
+contract SwapManager is TokenHelper {
     ISwapRouter public immutable i_swapRouter; // Only kyberswap
 
     constructor(address swapRouter) {
         i_swapRouter = ISwapRouter(swapRouter);
     }
 
-    function _swap(bytes memory swapData) internal {
-        i_swapRouter.swap(swapData);
+    function _swap(
+        address tokenIn,
+        uint256 amountIn,
+        bytes memory swapData
+    ) internal returns (uint256 returnAmount) {
+        _forceApprove(tokenIn, address(i_swapRouter), amountIn);
+        (returnAmount, ) = i_swapRouter.swap(swapData);
     }
 }
